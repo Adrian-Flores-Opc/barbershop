@@ -12,12 +12,8 @@ export enum themePalette {
     ERROR_MAIN = "#f44336",
     BG_ERROR_MAIN = "rgba(244,67,57,0.1)",
     SUCCESS_MAIN = "#66bb6a",
-<<<<<<< HEAD
     BG_SUCCESS_MAIN = "rgba(102,187,106,0.1)",
     BG_APPBAR_MAIN = "#000000"
-=======
-    BG_SUCCESS_MAIN = "rgba(102,187,106,0.1)"
->>>>>>> 3994dd20317eb4e5a2328fba3659ce2813b6b149
 }
 const theme = createTheme(
     {
@@ -73,24 +69,6 @@ const theme = createTheme(
                     colorPrimary:{
                         backgroundColor: themePalette.BG_APPBAR_MAIN,
                         backgroundImage: "none"
-                    }
-                }
-            },
-            MuiAlert:{
-                defaultProps:{
-                    style:{
-                        borderRadius: "0.8em",
-                        fontSize: "1em"
-                    }
-                },
-                styleOverrides:{
-                    standardError:{
-                        border: `1px solid ${themePalette.ERROR_MAIN}`,
-                        background: themePalette.BG_ERROR_MAIN
-                    },
-                    standardSuccess:{
-                        border: `1px solid ${themePalette.SUCCESS_MAIN}`,
-                        background: themePalette.BG_SUCCESS_MAIN
                     }
                 }
             }
