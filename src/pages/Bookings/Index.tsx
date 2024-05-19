@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Typography, Divider, ListItemButton, Grid } from "@mui/material";
 import { ContactsComponents } from "../../components";
 
@@ -63,5 +64,16 @@ export const BookingsPage: React.FC<{}> = () => {
             <Divider />
             <ContactsComponents />
         </Box>
+=======
+import { Button, Container } from "@mui/material";
+
+export const BookingsPage: React.FC<{}> = () => {
+    return (
+        <Container sx={{ mt: 9 }} maxWidth="xl">
+            <Button fullWidth variant="contained">
+                Reservas Page
+            </Button>
+        </Container>
+>>>>>>> 3994dd20317eb4e5a2328fba3659ce2813b6b149
     )
 }

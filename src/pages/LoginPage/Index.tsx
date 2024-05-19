@@ -29,6 +29,11 @@ export const LoginPage: React.FC<{}> = () => {
         }).catch((error) => {
             getError(error.message)
         })
+<<<<<<< HEAD
+=======
+        // getSuccess(JSON.stringify(loginData));
+        // console.log(loginData);
+>>>>>>> 3994dd20317eb4e5a2328fba3659ce2813b6b149
     }
 
     return (
