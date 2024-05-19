@@ -26,14 +26,9 @@ export const LoginPage: React.FC<{}> = () => {
         e.preventDefault();
         LoginValidate.validate(loginData).then(() => {
             getSuccess('CHECK 🤙')
-        }).catch((error) => {
-            getError(error.message)
+        }).catch((erorr: any) => {
+            getError(erorr.message)
         })
-<<<<<<< HEAD
-=======
-        // getSuccess(JSON.stringify(loginData));
-        // console.log(loginData);
->>>>>>> 3994dd20317eb4e5a2328fba3659ce2813b6b149
     }
 
     return (
