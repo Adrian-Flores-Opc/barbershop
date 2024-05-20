@@ -12,7 +12,7 @@ export const NavBar: React.FC<{}> = () => {
                     <Container maxWidth="xl">
                         <Grid container direction="row" justifyContent="space-between" alignItems="center">
                             <Grid item>
-                                <img src={ImagenLogo} alt="logo Barber shop" width={200}/>
+                                <img src={ImagenLogo} alt="logo Barber shop" width={200} onClick={() => navigate("Landing")} style={{ cursor: "pointer" }}/>
                             </Grid>
                             <Grid item>
                                 <Stack direction="row" spacing={2}>

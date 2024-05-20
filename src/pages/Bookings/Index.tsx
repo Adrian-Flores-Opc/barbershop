@@ -1,8 +1,16 @@
 import React from "react";
-import { Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Typography, Divider, ListItemButton, Grid } from "@mui/material";
-import { ContactsComponents } from "../../components";
+import { TextField,Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Typography, Divider, ListItemButton, Grid, Paper } from "@mui/material";
+import { ContactsComponents, RegisterComponents } from "../../components";
+import { makeStyles } from '@material-ui/core/styles';
 
 export const BookingsPage: React.FC<{}> = () => {
+
+    const useStyles = makeStyles({
+        avatar: {
+          backgroundColor: blue[100],
+          color: blue[600],
+        },
+      });
 
     const availableBarbers = [{
         name: "Adrian Condori Flores",
@@ -23,7 +31,7 @@ export const BookingsPage: React.FC<{}> = () => {
 
     return (
         <Box maxWidth="100%">
-            <Box maxWidth="100%">
+            {/* <Box maxWidth="100%">
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
                     <Grid item xs={12}>
                         <Grid container direction="column" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
@@ -59,7 +67,28 @@ export const BookingsPage: React.FC<{}> = () => {
                         </Grid>
                     </Grid>
                 </Grid>
-            </Box>
+            </Box> */}
+            <RegisterComponents 
+                elementOne={
+                    <Button variant="contained" fullWidth>URBANO ONE</Button>
+                } 
+                elementTwo={
+                    <Container maxWidth="sm">
+                    <Grid container direction="column" alignItems="center" justifyContent="center" sx={{ minHeight: "100vh" }}>
+                        <Grid item>
+                            <Paper sx={{ padding: "1.2em", borderRadius: "0.5em" }}>
+                                <Box component="form">
+                                    <TextField margin="normal" name="username" type="text" fullWidth label="Nombre Completo" sx={{ mt:2, mb: 1.5 }}  />
+                                    <TextField margin="normal" name="password" type="text" fullWidth label="Correo Electronico" sx={{ mt:1.5, mb: 1.5 }} />
+                                    <TextField margin="normal" name="password" type="text" fullWidth label="Celular" sx={{ mt:1.5, mb: 1.5 }} />
+                                    <Button fullWidth type="submit" variant="contained" sx={{ mt:1.5, mb: 3 }}>Iniciar Reserva</Button>
+                                </Box>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                    </Container>
+                }
+            />
             <Divider />
             <ContactsComponents />
         </Box>
