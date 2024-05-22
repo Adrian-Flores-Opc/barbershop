@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Box,Container, Stack, Typography,List,ListItem,ListItemAvatar,Avatar,ListItemText } from "@mui/material";
+import { Grid, Box,Container, Stack, Typography,List,ListItem,ListItemAvatar,Avatar,ListItemText,  } from "@mui/material";
 import ImageIcon from '@mui/icons-material/Image';
 import WorkIcon from '@mui/icons-material/Work';
 // import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -12,14 +12,20 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import ImagenLogo from "../../assets/logo_sin_fondo_blanco.png";
+import { useNavigate } from "react-router-dom";
 
 export const ContactsComponents: React.FC<{}>=({}) =>{
+    function ListItemLink(props: any) {
+        return <ListItem button component="a" {...props} />;
+    }
+
+    const navigate = useNavigate();
     const availableContacts = [{
         id: 1,
         title: "Calle Gregorio Reynolds # 1234",
         icon: <LocationOnIcon />,
         description: "Entre Av. 6 de Agosto y Av. 20 de Octubre Zona Sopocachi",
-        link:""
+        link: "https://maps.app.goo.gl/a1ZG9fQGsGkrUWwz8"
     },{
         id: 2,
         title: "2 2154678 / 75806163",
@@ -31,13 +37,13 @@ export const ContactsComponents: React.FC<{}>=({}) =>{
         title: "CORREO",
         icon: <EmailIcon />,
         description: "adriflores987@gmail.com",
-        link:""
+        link:"mailto:adriflores987@gmail.com"
     },{
         id: 4,
         title: "WHATSAPP",
         icon: <WhatsAppIcon />,
         description: "(+591) 75806163",
-        link:""
+        link:"https://wa.link/umkzie"
     }];
     return(
         <Grid container spacing={2} maxWidth="xl" bgcolor="black" sx={{ marginLeft:"0", maxWidth:"100%", top: "0", bottom:"0" }}>
@@ -48,14 +54,14 @@ export const ContactsComponents: React.FC<{}>=({}) =>{
                     {
                         availableContacts.map((group, index) => {
                             return(
-                                <ListItem>
+                                <ListItemLink href={group.link} target="_blank">
                                    <ListItemAvatar>
                                     <Avatar>
                                         {group.icon}
                                     </Avatar>
                                    </ListItemAvatar>
                                    <ListItemText primary={group.title} secondary={group.description} />
-                                </ListItem>
+                                </ListItemLink>
                             );
                         })
                     }
