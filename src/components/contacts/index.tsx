@@ -67,7 +67,7 @@ export const ContactsComponents: React.FC<{}>=({}) =>{
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
                     <Grid item xs={12}>
                         <Grid container direction="column" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
-                            <Grid item><Typography variant="h6" color="white">HORARIOS DE ATENCION</Typography> </Grid>
+                            <Grid item><Typography variant="h6" color="white">HORARIOS DE ATENCIÒN</Typography> </Grid>
                             <Grid item><Typography color="white">Lunes a Viernes</Typography> </Grid>
                             <Grid item><Typography color="white">09:00 - 17:30</Typography> </Grid>
                             <Grid item><Typography color="white">Sábados</Typography> </Grid>

@@ -10,14 +10,6 @@ import { NotificationProvider } from './context/notification.context'
 
 function App() {
   return (
-    // <div>
-    //   <NavBar />
-    //   <Container sx={{ mt:9 }} maxWidth="xl">
-    //     <Button variant="contained">
-    //       Hola mundo maricas !!!!!
-    //     </Button>
-    //   </Container>
-    // </div>
     <NotificationProvider>
       <BrowserRouter>
         <AppRouter />
