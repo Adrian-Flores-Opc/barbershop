@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Container, Grid, Paper, Box, Typography, TextField, Stack } from "@mui/material";
 import { useNotification } from "../../context/notification.context";
 import { LoginValidate } from "../../utils/validateForm";
+import FondoMainPrincipal  from "../../assets/fondo_main_demo.jpeg"
 
 type LoginType ={
     username: string,
@@ -32,7 +33,7 @@ export const LoginPage: React.FC<{}> = () => {
     }
 
     return (
-        <Container maxWidth="sm">
+        <Container maxWidth="xl">
             <Grid container direction="column" alignItems="center" justifyContent="center" sx={{ minHeight: "100vh" }}>
                 <Grid item>
                     <Paper sx={{ padding: "1.2em", borderRadius: "0.5em" }}>

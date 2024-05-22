@@ -7,10 +7,10 @@ type ThemeProp = {
 
 export enum themePalette {
     BG = "#ffffff",
-    LIME = "#C8FA5F",
+    LIME = "#ffffff",
     FONT_GLOBAL = "'JetBrains Mono', monospace",
     ERROR_MAIN = "#f44336",
-    BG_ERROR_MAIN = "rgba(244,67,57,0.1)",
+    BG_ERROR_MAIN = "#7A211B",
     SUCCESS_MAIN = "#66bb6a",
     BG_SUCCESS_MAIN = "rgba(102,187,106,0.1)",
     BG_APPBAR_MAIN = "#000000"
@@ -37,7 +37,8 @@ const theme = createTheme(
                         boxShadow: "none",
                         borderRadius: "0.5em",
                         border: "1px solid white",
-                        color: "white"
+                        color: "white",
+                        background: "black"
                     }
                 }
             },

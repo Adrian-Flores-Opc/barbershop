@@ -7,7 +7,7 @@ import { RegisterComponents } from "../../components";
 export const LandingPage: React.FC<{}> = () => {
     return (
         <Box maxWidth="100%">
-            <HeaderComponents title="BARBER SHOP URBANO" description="barber shop urbano" element={<Button variant="contained" fullWidth>URBANO</Button>} />
+            <HeaderComponents title="BARBERIA LINAJE URBANO" description="Barberia Linaje Urbano" element={<Button variant="contained" fullWidth>URBANO</Button>} />
             <RegisterComponents />
             <ContactsComponents />
         </Box>

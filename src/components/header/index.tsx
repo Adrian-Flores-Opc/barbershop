@@ -1,6 +1,6 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import React from "react";
-import FondoMainPrincipal  from "../../assets/fondo_1_pre_fondo.jpg"
+import FondoMainPrincipal  from "../../assets/fondo_main_demo.jpeg"
 
 type HeaderProps = {
     title: string;

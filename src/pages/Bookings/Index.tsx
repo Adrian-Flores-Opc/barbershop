@@ -1,17 +1,31 @@
 import React from "react";
-import { TextField,Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Typography, Divider, ListItemButton, Grid, Paper } from "@mui/material";
+import { TextField,Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Divider, ListItemButton, Grid, Paper } from "@mui/material";
 import { ContactsComponents, RegisterComponents } from "../../components";
-import { makeStyles } from '@material-ui/core/styles';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+import PersonIcon from '@mui/icons-material/Person';
+import AddIcon from '@mui/icons-material/Add';
+import Typography from '@mui/material/Typography';
+import { blue } from '@mui/material/colors';
 
-export const BookingsPage: React.FC<{}> = () => {
+const emails = ['username@gmail.com', 'user02@gmail.com'];
+export interface SimpleDialogProps {
+    open: boolean;
+    selectedValue: string;
+    onClose: (value: string) => void;
+}
 
-    const useStyles = makeStyles({
-        avatar: {
-          backgroundColor: blue[100],
-          color: blue[600],
-        },
-      });
-
+function SimpleDialog(props: SimpleDialogProps) {
+    const { onClose, selectedValue, open } = props;
+  
+    const handleClose = () => {
+      onClose(selectedValue);
+    };
+  
+    const handleListItemClick = (value: string) => {
+      onClose(value);
+    };
+    
     const availableBarbers = [{
         name: "Adrian Condori Flores",
         description: "BARBER - CENTRO ",
@@ -28,10 +42,11 @@ export const BookingsPage: React.FC<{}> = () => {
         details: "La mejor atención para nuestros clientes",
         avatar: "/static/images/avatar/3.jpg"
     }];
-
+  
     return (
-        <Box maxWidth="100%">
-            {/* <Box maxWidth="100%">
+      <Dialog onClose={handleClose} open={open}>
+        <DialogTitle>Barberos Disponibles</DialogTitle>
+            <Box maxWidth="100%">
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
                     <Grid item xs={12}>
                         <Grid container direction="column" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
@@ -67,7 +82,27 @@ export const BookingsPage: React.FC<{}> = () => {
                         </Grid>
                     </Grid>
                 </Grid>
-            </Box> */}
+            </Box>
+      </Dialog>
+    );
+  }
+
+export const BookingsPage: React.FC<{}> = () => {
+
+    const [open, setOpen] = React.useState(false);
+    const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = (value: string) => {
+      setOpen(false);
+      setSelectedValue(value);
+    };
+
+    return (
+        <Box maxWidth="100%">
             <RegisterComponents 
                 elementOne={
                     <Button variant="contained" fullWidth>URBANO ONE</Button>
@@ -79,9 +114,10 @@ export const BookingsPage: React.FC<{}> = () => {
                             <Paper sx={{ padding: "1.2em", borderRadius: "0.5em" }}>
                                 <Box component="form">
                                     <TextField margin="normal" name="username" type="text" fullWidth label="Nombre Completo" sx={{ mt:2, mb: 1.5 }}  />
-                                    <TextField margin="normal" name="password" type="text" fullWidth label="Correo Electronico" sx={{ mt:1.5, mb: 1.5 }} />
-                                    <TextField margin="normal" name="password" type="text" fullWidth label="Celular" sx={{ mt:1.5, mb: 1.5 }} />
-                                    <Button fullWidth type="submit" variant="contained" sx={{ mt:1.5, mb: 3 }}>Iniciar Reserva</Button>
+                                    <TextField margin="normal" name="email" type="text" fullWidth label="Correo Electronico" sx={{ mt:1.5, mb: 1.5 }} />
+                                    <TextField margin="normal" name="cellphone" type="text" fullWidth label="Celular" sx={{ mt:1.5, mb: 1.5 }} />
+                                    <Button fullWidth variant="contained" sx={{ mt:1.5, mb: 3 }} onClick={handleClickOpen}>Iniciar Reserva</Button>
+                                    <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose}></SimpleDialog>
                                 </Box>
                             </Paper>
                         </Grid>
