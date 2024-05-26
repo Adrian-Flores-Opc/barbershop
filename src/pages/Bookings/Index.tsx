@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField,Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Divider, ListItemButton, Grid, Paper } from "@mui/material";
+import { TextField,Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Divider, ListItemButton, Grid, Paper, CardMedia } from "@mui/material";
 import { ContactsComponents, RegisterComponents } from "../../components";
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
@@ -7,6 +7,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
+import Card from '@mui/material/Card';
+import FondoPerfilUrbano from "../../assets/fondoPerfilUrbano.png";
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 export interface SimpleDialogProps {
@@ -105,23 +107,25 @@ export const BookingsPage: React.FC<{}> = () => {
         <Box maxWidth="100%">
             <RegisterComponents 
                 elementOne={
-                    <Button variant="contained" fullWidth>URBANO ONE</Button>
+                    <Card sx={{ maxWidth: 350 }}>
+                       <CardMedia component="img" alt="urbano" height="450" image={FondoPerfilUrbano} />
+                    </Card>
                 } 
                 elementTwo={
                     <Container maxWidth="sm">
-                    <Grid container direction="column" alignItems="center" justifyContent="center" sx={{ minHeight: "100vh" }}>
-                        <Grid item>
-                            <Paper sx={{ padding: "1.2em", borderRadius: "0.5em" }}>
-                                <Box component="form">
-                                    <TextField margin="normal" name="username" type="text" fullWidth label="Nombre Completo" sx={{ mt:2, mb: 1.5 }}  />
-                                    <TextField margin="normal" name="email" type="text" fullWidth label="Correo Electronico" sx={{ mt:1.5, mb: 1.5 }} />
-                                    <TextField margin="normal" name="cellphone" type="text" fullWidth label="Celular" sx={{ mt:1.5, mb: 1.5 }} />
-                                    <Button fullWidth variant="contained" sx={{ mt:1.5, mb: 3 }} onClick={handleClickOpen}>Iniciar Reserva</Button>
-                                    <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose}></SimpleDialog>
-                                </Box>
-                            </Paper>
+                        <Grid container direction="column" alignItems="center" justifyContent="center" sx={{ minHeight: "100vh" }}>
+                            <Grid item>
+                                <Paper sx={{ padding: "1.2em", borderRadius: "0.5em" }}>
+                                    <Box component="form">
+                                        <TextField margin="normal" name="username" type="text" fullWidth label="Nombre Completo" sx={{ mt:2, mb: 1.5 }}  />
+                                        <TextField margin="normal" name="email" type="text" fullWidth label="Correo Electronico" sx={{ mt:1.5, mb: 1.5 }} />
+                                        <TextField margin="normal" name="cellphone" type="text" fullWidth label="Celular" sx={{ mt:1.5, mb: 1.5 }} />
+                                        <Button fullWidth variant="contained" sx={{ mt:1.5, mb: 3 }} onClick={handleClickOpen}>Iniciar Reserva</Button>
+                                        <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose}></SimpleDialog>
+                                    </Box>
+                                </Paper>
+                            </Grid>
                         </Grid>
-                    </Grid>
                     </Container>
                 }
             />
