@@ -10,8 +10,13 @@ import { blue } from '@mui/material/colors';
 import Card from '@mui/material/Card';
 import FondoPerfilUrbano from "../../assets/fondoPerfilUrbano.png";
 
-const emails = ['username@gmail.com', 'user02@gmail.com'];
 export interface SimpleDialogProps {
+    open: boolean;
+    selectedValue: string;
+    onClose: (value: string) => void;
+}
+
+export interface DatePickerDialogProps {
     open: boolean;
     selectedValue: string;
     onClose: (value: string) => void;
@@ -47,7 +52,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   
     return (
       <Dialog onClose={handleClose} open={open}>
-        <DialogTitle>Barberos Disponibles</DialogTitle>
+        <DialogTitle textAlign="center">Barberos Disponibles</DialogTitle>
             <Box maxWidth="100%">
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
                     <Grid item xs={12}>
@@ -56,7 +61,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                                 {
                                     availableBarbers.map((group, index) => {
                                         return(
-                                            <ListItemButton>
+                                            <ListItemButton onClick={() => console.log(index)}>
                                                 <ListItemAvatar>
                                                     <Avatar alt={group.name} src={group.avatar} />
                                                 </ListItemAvatar>
@@ -87,12 +92,19 @@ function SimpleDialog(props: SimpleDialogProps) {
             </Box>
       </Dialog>
     );
-  }
+}
+
+function DatePickerDialog(props: DatePickerDialogProps){
+    const { onClose, selectedValue, open } = props;
+    const handleClose = () => {
+        onClose(selectedValue);
+    }
+}
 
 export const BookingsPage: React.FC<{}> = () => {
 
     const [open, setOpen] = React.useState(false);
-    const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+    const [selectedValue, setSelectedValue] = React.useState("");
   
     const handleClickOpen = () => {
       setOpen(true);
