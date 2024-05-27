@@ -46,8 +46,8 @@ export const ContactsComponents: React.FC<{}>=({}) =>{
         link:"https://wa.link/umkzie"
     }];
     return(
-        <Grid container spacing={2} maxWidth="xl" bgcolor="black" sx={{ marginLeft:"0", maxWidth:"100%", top: "0", bottom:"0" }}>
-          <Grid xs={4}>
+        <Grid container spacing={2} maxWidth="xl" bgcolor="black" sx={{ marginLeft:"0", maxWidth:"100%", top: "0", bottom:"0" }} xs={12} sm={12}>
+          <Grid xs={4} sm={4}>
             <Container maxWidth="xl" sx={{ textAlign:"center" }}>
                 <img src={ImagenLogo} alt="logo Barber shop" width={150} />
                 <List sx={{ width: '100%' }}>
@@ -68,7 +68,7 @@ export const ContactsComponents: React.FC<{}>=({}) =>{
                 </List>
             </Container>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={4} sm={4}>
             <Box sx={{ width: "100%", marginTop: "95px"}}>
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
                     <Grid item xs={12}>
@@ -83,7 +83,7 @@ export const ContactsComponents: React.FC<{}>=({}) =>{
                 </Grid>
             </Box>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={4} sm={4}>
             <Box sx={{ width: "100%", marginTop: "95px"}}>
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ height:"100%" }}>
                     <Grid item xs={12}>
@@ -106,7 +106,7 @@ export const ContactsComponents: React.FC<{}>=({}) =>{
                 </Grid>
             </Box>
           </Grid>
-          <Grid xs={12}>
+          <Grid xs={12} sm={12}>
             <Box sx={{ width: "100%" }}>
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ height: "100%" }}>
                     <Grid item xs={12}>

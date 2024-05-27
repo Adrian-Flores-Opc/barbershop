@@ -1,5 +1,6 @@
 import React from "react";
-import { TextField,Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Divider, ListItemButton, Grid, Paper, CardMedia } from "@mui/material";
+import dayjs, { Dayjs } from 'dayjs';
+import { TextField,Box, Avatar, Button, Container, List, ListItem, ListItemAvatar, ListItemText, Divider, ListItemButton, Grid, Paper, CardMedia, DialogContent, DialogActions } from "@mui/material";
 import { ContactsComponents, RegisterComponents } from "../../components";
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
@@ -9,6 +10,12 @@ import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import Card from '@mui/material/Card';
 import FondoPerfilUrbano from "../../assets/fondoPerfilUrbano.png";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DemoContainer, DemoItem  } from '@mui/x-date-pickers/internals/demo';
+import { TimeClock } from '@mui/x-date-pickers/TimeClock';
+import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 
 export interface SimpleDialogProps {
     open: boolean;
@@ -32,7 +39,19 @@ function SimpleDialog(props: SimpleDialogProps) {
     const handleListItemClick = (value: string) => {
       onClose(value);
     };
+
+    const [openDate, setOpenDate] = React.useState(false);
+    const [selectedDateValue, setSelectedDateValue] = React.useState("");
     
+    const handleClickDateOpen = () => {
+        setOpenDate(true);
+    }
+
+    const handleDateClose = (value: string) => {
+        setOpenDate(false);
+        setSelectedDateValue(value);
+    }
+
     const availableBarbers = [{
         name: "Adrian Condori Flores",
         description: "BARBER - CENTRO ",
@@ -61,7 +80,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                                 {
                                     availableBarbers.map((group, index) => {
                                         return(
-                                            <ListItemButton onClick={() => console.log(index)}>
+                                            <ListItemButton onClick={handleClickDateOpen}>
                                                 <ListItemAvatar>
                                                     <Avatar alt={group.name} src={group.avatar} />
                                                 </ListItemAvatar>
@@ -86,6 +105,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                                     })
                                 }
                             </List>
+                            <DatePickerDialog selectedValue={selectedDateValue} open={openDate} onClose={handleDateClose} />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -96,9 +116,37 @@ function SimpleDialog(props: SimpleDialogProps) {
 
 function DatePickerDialog(props: DatePickerDialogProps){
     const { onClose, selectedValue, open } = props;
+    
     const handleClose = () => {
         onClose(selectedValue);
     }
+
+    const handleListItemClick = (value: string) => {
+        onClose(value);
+    }
+
+    const [value, setValue] = React.useState<Dayjs  | null>(dayjs('2024-05-26'));
+
+    return(
+        <Dialog onClose={handleClose} open={open}>
+            <DialogTitle textAlign="center">Seleccione la Fecha</DialogTitle>
+            <DialogContent>
+                <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es-ES" >
+                    <DemoContainer components={[ 'DatePicker', 'DatePicker' ]}>
+                        {/* <DatePicker label="Fechas Disponibles" value={value} onChange={(newValue) => setValue(newValue)}/> */}
+                        <StaticDatePicker displayStaticWrapperAs="desktop" defaultValue={dayjs('2024-05-26')} slotProps={{ toolbar: { toolbarFormat: 'ddd DD MMMM', hidden: false }, }} />
+                        <DemoItem label="Horarios Disponibles">
+                            <TimeClock views={['hours']} />
+                        </DemoItem>
+                    </DemoContainer>
+                </LocalizationProvider>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose}>Cancelar</Button>
+                <Button onClick={handleClose} autoFocus>Aceptar</Button>
+            </DialogActions>
+        </Dialog>
+    )
 }
 
 export const BookingsPage: React.FC<{}> = () => {
